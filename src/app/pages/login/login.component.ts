@@ -49,7 +49,9 @@ import { FormsModule, NgForm } from '@angular/forms';
       
       <app-primary-button class="" [label]="'Sign in '" /> 
     </form>
-
+    <span *ngIf="isUserLoading() " class="text-red-500">
+            Logging in...            
+          </span>
     <div class="flex flex-col justify-center items-center mt-10 text-green-500">
       <span> Sample Username: johnd </span>
       <span> Sample Password: m38rmF$ </span>
@@ -62,8 +64,10 @@ import { FormsModule, NgForm } from '@angular/forms';
 export class LoginComponent {
   authService = inject(AuthService);
   notAuthorized = inject(AuthService).notAuthorized;
+  isUserLoading = inject(AuthService).isUserLoading;
 
   onFormSubmit(f: NgForm) {
+    this.isUserLoading.set(true);
     this.authService.login({ username: f.value.username, password: f.value.password });
   }
 }

@@ -105,11 +105,17 @@ import { Product } from '../../models/products.model';
                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                   <span *ngIf="!image.valid && image.touched" class="text-red-500 ml-2">Required</span>                  
-
+  
                 </div>
               </div>
               <app-primary-button class="" [label]="'Submit '" />
-            </form>            
+            </form>      
+            <span *ngIf="isLoading() " class="text-green-500">
+            Adding Product ...
+          </span>     
+          <span *ngIf="!isLoading() && !isAddProductSuccess() " class="text-red-500">
+            Adding Product Failed! Tryagain.
+          </span>   
           </div>
         </div>
       </div>
@@ -119,14 +125,16 @@ import { Product } from '../../models/products.model';
 })
 export class AddProductComponent {
   storeService = inject(StoreService);
+  isLoading = inject(StoreService).isLoading;
   addedProduct = signal<Product>( { id: 0, title: '', price: 0, description: '', category: '', image: '' });
-
+  isAddProductSuccess = inject(StoreService).isAddProductSuccess;
   async onFormSubmit(f: NgForm) {
-    console.log(f.valid);
+    // console.log(f.valid);
     if (!f.valid) {
       alert('Please fill all the fields');
       return;
     }
+    this.isLoading.set(true);
     const data = await this.storeService.addProduct({
       id: Date.now(), // or any other logic to generate a unique id
       title: f.value.title,

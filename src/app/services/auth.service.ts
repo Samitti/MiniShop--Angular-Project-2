@@ -11,6 +11,8 @@ export class AuthService {
   #loggedIn = signal(false);
   isLoggedIn = this.#loggedIn.asReadonly();
   notAuthorized = signal(false);
+  isUserLoading = signal(false);
+
 
 
   login({ username, password }: User) {
@@ -33,6 +35,7 @@ export class AuthService {
       // console.log(data);
       this.#loggedIn.set(true);
       this.notAuthorized.set(false);
+      this.isUserLoading.set(false);
       this.router.navigate(['/']);
     })
     .catch(error => {
