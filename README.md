@@ -1,6 +1,17 @@
-# MiniProductStore
+# MiniShop 
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
+This is the capstone project for Angular program. In this project, In this project I buit a mini shop using angular framework, demonstrating the key skills required to develop single page applications using Angular and connecting and fetchoiching data from API. 
+
+## Built With
+
+- Angular 19
+- Tailwind CSS
+- fakestoreapi.com as API
+- ES6
+- CSS
+
+[Live Demo Link Netlify](https://samitti-free-to-play-games-catalogue-redux.netlify.app/](https://mini-store-ng.netlify.app/)
+
 
 ## Development server
 
