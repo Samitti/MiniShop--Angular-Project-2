@@ -1,6 +1,6 @@
 # MiniShop 
 
-This is the capstone project for Angular program. In this project, In this project I buit a mini shop using angular framework, demonstrating the key skills required to develop single page applications using Angular and connecting and fetchoiching data from API. 
+This is the capstone project for Angular program. In this project, I buit a mini shop using angular framework, demonstrating the key skills required to develop single page applications using Angular and connecting and fetchiching data from API. 
 
 ## Built With
 
